@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 // Components
-// import Clock from './components/Clock/Clock'
+import Clock from './components/Clock/Clock'
 import Card from './components/Card/Card'
 
 const data = [
@@ -65,11 +65,11 @@ export default class App extends Component {
           <h1>
             Bootcamp white - <strong>React</strong>
           </h1>
+          <Clock />
         </header>
         <div className='cards-container'>
           {this._renderCards()}
-        </div>
-        {/* <Clock /> */}
+        </div>        
       </div>
     )
   }
