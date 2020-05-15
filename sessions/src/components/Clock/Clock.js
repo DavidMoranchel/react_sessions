@@ -2,29 +2,29 @@ import React, { Component } from "react";
 
 export default class Clock extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       date: new Date(),
-      name: 'David'
-    }
+      name: "David",
+    };
   }
 
   componentDidMount() {
-    this.dateInterval = setInterval(() => this.tick(), 1000)
+    this.dateInterval = setInterval(() => this.tick(), 1000);
   }
 
   componentDidUpdate() {
-    console.log('date',this.state.date)
+    console.log("date", this.state.date);
   }
 
   componentWillUnmount() {
-    clearInterval(this.dateInterval)
+    clearInterval(this.dateInterval);
   }
 
   tick() {
     this.setState({
-      date: new Date()
-    })
+      date: new Date(),
+    });
   }
 
   render() {
@@ -36,7 +36,6 @@ export default class Clock extends Component {
     );
   }
 }
-
 
 // Ejercicio
 
