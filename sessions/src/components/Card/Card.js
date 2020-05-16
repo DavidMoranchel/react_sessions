@@ -9,6 +9,7 @@ function Card({
   author,
   publicationDate,
   readTime,
+  image,
 }) {
   return (
     <div className='Card'>
@@ -21,7 +22,7 @@ function Card({
       </div>
       <div className='Card-image'>
         <figure>
-          <img alt='card-p'src={'https://picsum.photos/200/300'} />
+          <img alt='card-p'src={image} />
         </figure>
       </div>
     </div>

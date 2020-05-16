@@ -5,6 +5,9 @@ import './App.css';
 // Components
 import Clock from './components/Clock/Clock'
 import Card from './components/Card/Card'
+import Counter from './components/Counter'
+import Button from './components/Button'
+// import Notes from './components/Notes'
 
 const data = [
   {
@@ -14,6 +17,7 @@ const data = [
     'author':'Marvin Wendt in Better Programming',
     'publicationDate':'May 4',
     'readTime':'3 min read',
+    'image':'https://picsum.photos/id/1/200/230',
   },
   {
     'category':'PROGRAMMING',
@@ -22,6 +26,7 @@ const data = [
     'author':'Marvin Wendt in Better Programming',
     'publicationDate':'May 10',
     'readTime':'5 min read',
+    'image':'https://picsum.photos/id/2/200/230',
   },
   {
     'category':'PROGRAMMING',
@@ -30,6 +35,7 @@ const data = [
     'author':'Marvin Wendt in Better Programming',
     'publicationDate':'May 10',
     'readTime':'5 min read',
+    'image':'https://picsum.photos/id/3/200/230',
   }
 ]
 
@@ -42,16 +48,19 @@ export default class App extends Component {
       description,
       author,
       publicationDate,
-      readTime
-    }) => {
+      readTime,
+      image
+    }, index) => {
       return (
-        <Card 
+        <Card
+          key={`card_${index}`}
           category={category}
           title={title}
           description={description}
           author={author}
           publicationDate={publicationDate}
           readTime={readTime}
+          image={image}
         />
       )
     })
@@ -66,11 +75,28 @@ export default class App extends Component {
             Bootcamp white - <strong>React</strong>
           </h1>
           <Clock />
+          <Counter step={2} finalCounter={100} cutCounter={2}/>
+          <Button />
         </header>
         <div className='cards-container'>
           {this._renderCards()}
-        </div>        
+        </div> 
+        {/* <Notes />   */}
       </div>
     )
   }
 }
+
+
+
+
+  // constructor(props) {
+  //   super(props)
+  //   this.handleClick = this.handleClick.bind(this)
+  // }
+  // handleClick() {
+  //   console.log(this)
+  // }
+  // handleClick = () => {
+  //   console.log(this);
+  // }
