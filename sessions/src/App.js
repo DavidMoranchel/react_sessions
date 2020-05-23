@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Notes from "./pages/Notes";
 import Menu from "./pages/Menu";
 import CurrencyConverter from './pages/CurrencyConverter'
+import LogIn from './pages/LogIn'
 
 // CSS
 import "./App.css";
@@ -46,7 +47,7 @@ export default class App extends Component {
           <Menu logOut={this.logOut} isUserLogedIn={isUserLogedIn} />
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home isUserLogedIn={isUserLogedIn} />
             </Route>
             <Route exact path="/notes">
               <Notes isUserLogedIn={isUserLogedIn} />
@@ -54,21 +55,12 @@ export default class App extends Component {
             <Route exact path="/currency-converter">
               <CurrencyConverter />
             </Route>
-
+            <Route exact path="/login">
+              <LogIn />
+            </Route>
           </Switch>
         </div>
       </Router>
     );
   }
 }
-
-
-// componentDidMount() {
-//   localStorage.setItem('authTokenUser','3425432531')
-//   const authKey = localStorage.getItem('authTokenUser')
-
-  
-//   if (authKey) {
-//     console.log(authKey)
-//   }
-// }
