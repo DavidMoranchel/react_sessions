@@ -7,6 +7,7 @@ import Header from "../../components/Header";
 import "./Home.css";
 
 function Home(props) {
+  console.table(props)
   return (
     <div className="Container">
       <div>

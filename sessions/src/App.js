@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Notes from "./pages/Notes";
 import Menu from "./pages/Menu";
 import CurrencyConverter from './pages/CurrencyConverter'
+import Hooks from './pages/Hooks'
 import LogIn from './pages/LogIn'
 
 // CSS
@@ -54,6 +55,9 @@ export default class App extends Component {
             </Route>
             <Route exact path="/currency-converter">
               <CurrencyConverter />
+            </Route>
+            <Route exact path="/hooks">
+              <Hooks />
             </Route>
             <Route exact path="/login">
               <LogIn />

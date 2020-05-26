@@ -22,7 +22,6 @@ export default class LogIn extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.handleServiceResponse = this.handleServiceResponse.bind(this)
   }
 
   handleInput({ target: { name, value } }) {
@@ -31,31 +30,37 @@ export default class LogIn extends Component {
     });
   }
 
-  handleServiceResponse(response) {
-    if (response.success) {
-      localStorage.setItem('authTokenUser', response.data.token)
-      this.setState({
-        success: true
-      })
-    }
-    console.log(response.error)
-  } 
-
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
     const { email, password } = this.state;
     const data = {
       email,
       password,
     };
-    LogInService(data, this.handleServiceResponse)
+    let response = await LogInService(data)
+    let responseJSON = await response.json()
+    if (responseJSON.success) {
+      localStorage.setItem('authTokenUser', response.data.token)
+      this.setState({
+        success: true
+      })
+    } else if(!responseJSON.success) {
+      this.setState({
+        success: false
+      })
+    }
   }
 
   render() {
     const { email, password, success } = this.state;
+    if (success) {
+      // this.history.push('/')
+      return <Redirect to=''/>
+    } else if(!success) {
+      console.log('No son tus datos')
+    }
     return (
       <div className="Container">
-        {success ? <Redirect to='/' /> : null }
         <div>
           <Header
             title={"Inicio de sesión"}
