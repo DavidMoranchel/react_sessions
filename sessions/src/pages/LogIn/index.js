@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 
-// External Packages
-import { Redirect } from "react-router-dom";
-
 // Components
 import Header from "../../components/Header";
 
@@ -37,27 +34,24 @@ export default class LogIn extends Component {
       email,
       password,
     };
-    let response = await LogInService(data)
-    let responseJSON = await response.json()
+    let response = await LogInService(data);
+    let responseJSON = await response.json();
     if (responseJSON.success) {
-      localStorage.setItem('authTokenUser', response.data.token)
+      localStorage.setItem("authTokenUser", responseJSON.data.token);
       this.setState({
-        success: true
-      })
-    } else if(!responseJSON.success) {
+        success: true,
+      });
+    } else if (!responseJSON.success) {
       this.setState({
-        success: false
-      })
+        success: false,
+      });
     }
   }
 
   render() {
     const { email, password, success } = this.state;
     if (success) {
-      // this.history.push('/')
-      return <Redirect to=''/>
-    } else if(!success) {
-      console.log('No son tus datos')
+      window.location.href = "/";
     }
     return (
       <div className="Container">
